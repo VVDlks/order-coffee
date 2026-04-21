@@ -45,3 +45,8 @@
     border-radius: 5px;
 }
 
+.delete-button {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+}
