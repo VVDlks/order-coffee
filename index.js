@@ -24,18 +24,20 @@ if (newFormButton) {
 
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete-button')) {
-        const drinksCount = document.querySelectorAll('.beverage').length;
-        if (drinksCount > 1) {
-            event.target.closest('.beverage').remove();
+        let forms = document.querySelectorAll('.beverage');
+        const count = forms.length;
+        if (count <= 1) {
+            return;
+        }
+        event.target.closest('.beverage').remove();
+        forms = document.querySelectorAll('.beverage');
+        let index = 1;
+        for (const form of forms) {
+            form.querySelector('.beverage-count').textContent = `Напиток №${index}`;
+            index += 1;
         }
     }
 });
-
-document.querySelector('.submit-button').addEventListener('click', (event) => {
-    event.preventDefault();
-    const modal = document.querySelector('.modal');
-    modal.style.display = 'flex';
-})
 
 const modalExit = document.querySelector('.modal-close-button');
 if(modalExit) {
@@ -50,16 +52,18 @@ document.querySelector('.submit-button').addEventListener('click', (event) => {
 
     const modal = document.querySelector('.modal');
     const tableBody = modal.querySelector('tbody');
+    const statusText = modal.querySelector('.modal-status'); // Находим абзац для текста
+
+    if (statusText) {
+        statusText.textContent = getText();
+    }
 
     tableBody.innerHTML = '';
-
     const forms = document.querySelectorAll('.beverage');
 
     forms.forEach(form => {
         const name = form.querySelector('select').selectedOptions[0].text;
-
         const milk = form.querySelector('input[type="radio"]:checked').parentElement.textContent.trim();
-
         const extras = Array.from(form.querySelectorAll('input[type="checkbox"]:checked'))
             .map(cb => cb.parentElement.textContent.trim())
             .join(', ');
@@ -70,9 +74,23 @@ document.querySelector('.submit-button').addEventListener('click', (event) => {
             <td>${milk}</td>
             <td>${extras || 'нет'}</td>
         `;
-
         tableBody.appendChild(row);
     });
 
     modal.style.display = 'flex';
 });
+
+
+
+function getText() {
+    const number = document.querySelectorAll('.beverage').length;
+    const y = number % 10;
+    const x = number % 100 - y;
+    if (y === 5 || y === 6 || y === 7 || y === 8 || y === 9 || y === 0 || x === 10 ) {
+        return `Вы заказали ${number} напитков`;
+    }
+    if (y === 1){
+        return `Вы заказали ${number} напиток`;
+    }
+    return `Вы заказали ${number} напитка`;
+}
