@@ -42,6 +42,7 @@ document.addEventListener('click', (event) => {
 document.querySelector('.submit-button').addEventListener('click', (event) => {
     event.preventDefault();
     const modal = document.querySelector('.modal');
+    modal.textContent = getText();
     modal.style.display = 'flex';
 })
 
@@ -51,4 +52,17 @@ if(modalExit) {
         const modal = document.querySelector('.modal');
         modal.style.display = 'none';
     })
+}
+
+function getText() {
+    const number = document.querySelectorAll('.beverage').length;
+    const y = number % 10;
+    const x = number % 100 - y;
+    if (y === 5 || y === 6 || y === 7 || y === 8 || y === 9 || y === 0 || x === 10 ) {
+        return `Вы заказали ${number} напитков`;
+    }
+    if (y === 1){
+        return `Вы заказали ${number} напиток`;
+    }
+    return `Вы заказали ${number} напитка`;
 }

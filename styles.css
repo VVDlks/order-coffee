@@ -53,6 +53,8 @@
 }
 
 .modal {
+    min-height: 50px;
+    padding: 10px;
     display: none;
     position: fixed;
     top: 50%;
