@@ -8,10 +8,13 @@ if (newFormButton) {
         const index = forms.length +1;
         newForm.querySelector('.beverage-count').textContent = `Напиток №${index}`;
 
-        newForm.querySelectorAll('input, select').forEach(el => {
+        newForm.querySelectorAll('input, select, textarea').forEach(el => {
             el.name = `${el.name.split(' ')[0]} ${index}`
             if (el.type === 'radio' || el.type === 'checkbox') {
                 el.checked = false;
+            }
+            if (el.type === 'textarea'){
+                el.value = '';
             }
         });
 
@@ -54,6 +57,10 @@ if(modalExit) {
     })
 }
 
+document.querySelector('#textarea').addEventListener('input', (event) => {
+    event.target.parentNode.nextElementSibling.textContent = getTextForTextarea(event.target.value);
+});
+
 function getText() {
     const number = document.querySelectorAll('.beverage').length;
     const y = number % 10;
@@ -65,4 +72,13 @@ function getText() {
         return `Вы заказали ${number} напиток`;
     }
     return `Вы заказали ${number} напитка`;
+}
+
+function getTextForTextarea(text){
+    let result = '';
+    const words = text.split(' ');
+    for (const word of words) {
+        result += word + ' ';
+    }
+    return result;
 }
