@@ -24,9 +24,17 @@ if (newFormButton) {
 
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('delete-button')) {
-        const drinksCount = document.querySelectorAll('.beverage').length;
-        if (drinksCount > 1) {
-            event.target.closest('.beverage').remove();
+        let forms = document.querySelectorAll('.beverage');
+        const count = forms.length;
+        if (count <= 1) {
+            return;
+        }
+        event.target.closest('.beverage').remove();
+        forms = document.querySelectorAll('.beverage');
+        let index = 1;
+        for (const form of forms) {
+            form.querySelector('.beverage-count').textContent = `Напиток №${index}`;
+            index += 1;
         }
     }
 });
