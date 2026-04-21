@@ -44,3 +44,11 @@ document.querySelector('.submit-button').addEventListener('click', (event) => {
     const modal = document.querySelector('.modal');
     modal.style.display = 'flex';
 })
+
+const modalExit = document.querySelector('.modal-close-button');
+if(modalExit) {
+    modalExit.addEventListener('click', (event) => {
+        const modal = document.querySelector('.modal');
+        modal.style.display = 'none';
+    })
+}
