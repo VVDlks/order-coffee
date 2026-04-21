@@ -61,11 +61,18 @@
     height: auto;
     background-color: white;
     border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 1px;
 }
 .modal.open { display: block; } /* Класс для открытия */
 .modal-content {
     background-color: white;
     margin: 15% auto; padding: 20px; width: 50%;
+}
+.modal-close-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 1px;
+    background-color: #d36a99;
 }
 
