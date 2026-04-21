@@ -22,13 +22,13 @@ if (newFormButton) {
     })
 }
 
-document.querySelectorAll('.delete-button').forEach((el) => {
-    el.addEventListener('click', (x) => {
-        const drinksCount = document.querySelectorAll(`.beverage`).length;
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('delete-button')) {
+        const drinksCount = document.querySelectorAll('.beverage').length;
         if (drinksCount > 1) {
-            x.target.parentElement.remove();
+            event.target.closest('.beverage').remove();
         }
-    });
+    }
 });
 
 document.querySelector('.submit-button').addEventListener('click', (event) => {

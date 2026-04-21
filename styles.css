@@ -1,4 +1,5 @@
 .beverage {
+    position: relative;
     border: 1px solid #eee;
     margin: 15px 0;
     padding: 15px;
@@ -47,8 +48,8 @@
 
 .delete-button {
     position: absolute;
-    top: 30px;
-    right: 20px;
+    top: 5px;
+    right: 5px;
 }
 
 .modal {
@@ -63,7 +64,7 @@
     border: 1px solid black;
     border-radius: 10px;
 }
-.modal.open { display: block; } /* Класс для открытия */
+.modal.open { display: block; }
 .modal-content {
     background-color: white;
     margin: 15% auto; padding: 20px; width: 50%;
