@@ -6,3 +6,9 @@ document.querySelectorAll('.delete-button').forEach((el) => {
         }
     });
 });
+
+document.querySelector('.submit-button').addEventListener('click', (event) => {
+    event.preventDefault();
+    const modal = document.querySelector('.modal');
+    modal.style.display = 'flex';
+})

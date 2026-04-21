@@ -50,3 +50,22 @@
     top: 30px;
     right: 20px;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: auto;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.modal.open { display: block; } /* Класс для открытия */
+.modal-content {
+    background-color: white;
+    margin: 15% auto; padding: 20px; width: 50%;
+}
+
