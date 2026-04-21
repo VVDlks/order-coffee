@@ -52,6 +52,8 @@
     right: 5px;
 }
 
+
+
 .modal {
     display: none;
     position: fixed;
@@ -79,3 +81,16 @@
     z-index: 10;
 }
 
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin-top: 20px;
+    font-family: sans-serif;
+    border: 2px solid #d36a99;
+}
+
+th, td {
+    border: 1px solid #d36a99;
+    padding: 10px 15px;
+    text-align: left;
+}
