@@ -57,6 +57,41 @@ if(modalExit) {
     })
 }
 
+document.querySelector('.submit-button').addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const modal = document.querySelector('.modal');
+    const tableBody = modal.querySelector('tbody');
+    const statusText = modal.querySelector('.modal-status'); // Находим абзац для текста
+
+    if (statusText) {
+        statusText.textContent = getText();
+    }
+
+    tableBody.innerHTML = '';
+    const forms = document.querySelectorAll('.beverage');
+
+    forms.forEach(form => {
+        const name = form.querySelector('select').selectedOptions[0].text;
+        const milk = form.querySelector('input[type="radio"]:checked').parentElement.textContent.trim();
+        const extras = Array.from(form.querySelectorAll('input[type="checkbox"]:checked'))
+            .map(cb => cb.parentElement.textContent.trim())
+            .join(', ');
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${name}</td>
+            <td>${milk}</td>
+            <td>${extras || 'нет'}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+
+    modal.style.display = 'flex';
+});
+
+
+
 document.querySelector('#textarea').addEventListener('input', (event) => {
     event.target.parentNode.nextElementSibling.textContent = getTextForTextarea(event.target.value);
 });
