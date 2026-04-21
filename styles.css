@@ -63,6 +63,7 @@
     background-color: white;
     border: 1px solid black;
     border-radius: 1px;
+    z-index: 9;
 }
 .modal.open { display: block; }
 .modal-content {
@@ -75,5 +76,6 @@
     right: 0;
     border-radius: 1px;
     background-color: #d36a99;
+    z-index: 10;
 }
 
